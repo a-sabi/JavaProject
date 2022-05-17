@@ -2,12 +2,12 @@ package com.example.mediaplayer;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -49,11 +49,33 @@ public class HelloController implements Initializable {
     private TimerTask task;
     private boolean running;
     @FXML
-    private ImageView logoImageView;
+    private ImageView logoImageView, mainImageView, playlistsImageView;
 
+    @FXML
+    private TableColumn<User, String> artist;
+    @FXML
+    private TextField filterField;
+    @FXML
+    private TableColumn<User, String> name;
+    @FXML
+    private TableView<User> table;
+    @FXML
+    private TableColumn<User, String> time;
 
+    ObservableList<User> list = FXCollections.observableArrayList(
+            new User("I Bet You Look Good On The Dance Floor", "Arctic Monkeys", "2:56"),
+            new User("why'd you only call me when you're high", "Arctic Monkeys", "2:41"),
+            new User("girl crush", "Harry Styles", "4:03"),
+            new User("summertime", "My Chemical Romance", "4:06")
+    );
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        name.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
+        artist.setCellValueFactory(new PropertyValueFactory<User, String>("artist"));
+        time.setCellValueFactory(new PropertyValueFactory<User, String>("time"));
+
+        table.setItems(list);
+
         songs = new ArrayList<File>();
         directory = new File("music");
         files = directory.listFiles();
@@ -78,6 +100,14 @@ public class HelloController implements Initializable {
         File logoFile = new File("images/Component 3.png");
         Image logoImage = new Image(logoFile.toURI().toString());
         logoImageView.setImage(logoImage);
+
+        File mainFile = new File("images/Component 4.png");
+        Image mainImage = new Image(mainFile.toURI().toString());
+        mainImageView.setImage(mainImage);
+
+        File playlistsFile = new File("images/Component 5.png");
+        Image playlistsImage = new Image(playlistsFile.toURI().toString());
+        playlistsImageView.setImage(playlistsImage);
     }
 
 
@@ -169,7 +199,6 @@ public class HelloController implements Initializable {
                 running = true;
                 double current = mediaPlayer.getCurrentTime().toSeconds();
                 double end = media.getDuration().toSeconds();
-                //System.out.println(current/end);
                 songProgressBar.setProgress(current/end);
 
                 if(current/end == 1){

@@ -4,13 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="player" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="835.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayer.HelloController">
+<AnchorPane fx:id="player" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayer.HelloController">
     <children>
       <Button id="previousButton" layoutX="1.0" layoutY="665.0" mnemonicParsing="false" onAction="#previousMedia" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #000000;">
          <graphic>
@@ -46,10 +50,30 @@
                 <Font />
             </font>
         </Label>
-      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="logoIg" fx:id="logoImageView" fitHeight="70.0" fitWidth="70.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../images/Component 3.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="mainImageView" fitHeight="61.0" fitWidth="200.0" layoutX="118.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../images/Component 4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playlistsImageView" fitHeight="61.0" fitWidth="200.0" layoutX="285.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../images/Component 5.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table" layoutY="110.0" prefHeight="485.0" prefWidth="835.0" style="-fx-background-color: #000000;">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="315.3333511352539" style="-fx-background-color: #004cd4;" text="Name" />
+            <TableColumn fx:id="artist" minWidth="0.0" prefWidth="284.66668701171875" style="-fx-background-color: #004cd4;" text="Artist" />
+            <TableColumn fx:id="time" minWidth="0.0" prefWidth="232.6666259765625" style="-fx-background-color: #004cd4;" text="Time" />
+        </columns>
+      </TableView>
+      <Line endX="729.0" layoutX="106.0" layoutY="616.0" startX="-106.00000762939453" stroke="WHITE" />
+      <TextField fx:id="filterField" layoutX="556.0" layoutY="21.0" prefHeight="33.0" prefWidth="243.0" promptText="search" />
+      <FontIcon iconColor="WHITE" iconLiteral="gmi-search" iconSize="40" layoutX="504.0" layoutY="59.0" />
     </children>
 </AnchorPane>
