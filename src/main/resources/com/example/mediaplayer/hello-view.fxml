@@ -67,9 +67,9 @@
       </ImageView>
       <TableView fx:id="table" layoutY="110.0" prefHeight="485.0" prefWidth="835.0" style="-fx-background-color: #000000;">
         <columns>
-          <TableColumn fx:id="name" prefWidth="315.3333511352539" style="-fx-background-color: #004cd4;" text="Name" />
-            <TableColumn fx:id="artist" minWidth="0.0" prefWidth="284.66668701171875" style="-fx-background-color: #004cd4;" text="Artist" />
-            <TableColumn fx:id="time" minWidth="0.0" prefWidth="232.6666259765625" style="-fx-background-color: #004cd4;" text="Time" />
+          <TableColumn fx:id="name" prefWidth="315.3333511352539" style="-fx-background-color: #ffffff;" text="Name" />
+            <TableColumn fx:id="artist" minWidth="0.0" prefWidth="284.66668701171875" style="-fx-background-color: #ffffff;" text="Artist" />
+            <TableColumn fx:id="time" minWidth="0.0" prefWidth="232.6666259765625" style="-fx-background-color: #ffffff;" text="Time" />
         </columns>
       </TableView>
       <Line endX="729.0" layoutX="106.0" layoutY="616.0" startX="-106.00000762939453" stroke="WHITE" />
