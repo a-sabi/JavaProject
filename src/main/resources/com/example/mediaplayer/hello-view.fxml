@@ -43,9 +43,14 @@
             <FontIcon iconColor="WHITE" iconLiteral="gmi-shuffle" iconSize="40" />
          </graphic>
       </Button>
+      <Button fx:id="up" layoutY="582.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #000000;">
+         <graphic>
+            <FontIcon iconColor="WHITE" iconLiteral="gmi-keyboard-arrow-up" iconSize="40" text="" />
+         </graphic>
+      </Button>
         <ProgressBar fx:id="songProgressBar" layoutY="715.0" prefHeight="18.0" prefWidth="835.0" progress="0.0" />
         <Slider id="volumeSlider" fx:id="volumeSlider" layoutX="785.0" layoutY="622.0" orientation="VERTICAL" prefHeight="76.0" prefWidth="14.0" value="50.0" />
-        <Label fx:id="songLabel" layoutY="616.0" prefHeight="33.0" prefWidth="517.0" text="song name" textAlignment="CENTER" textFill="#e6e0e0">
+        <Label fx:id="songLabel" layoutY="627.0" prefHeight="33.0" prefWidth="517.0" text="song name" textAlignment="CENTER" textFill="#e6e0e0">
             <font>
                 <Font />
             </font>
@@ -65,14 +70,14 @@
             <Image url="@../../../../../../images/Component 5.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutY="110.0" prefHeight="485.0" prefWidth="835.0" style="-fx-background-color: #000000;">
+      <TableView fx:id="table" layoutY="110.0" prefHeight="408.0" prefWidth="835.0" style="-fx-background-color: #000000;">
         <columns>
           <TableColumn fx:id="name" prefWidth="315.3333511352539" style="-fx-background-color: #ffffff;" text="Name" />
             <TableColumn fx:id="artist" minWidth="0.0" prefWidth="284.66668701171875" style="-fx-background-color: #ffffff;" text="Artist" />
             <TableColumn fx:id="time" minWidth="0.0" prefWidth="232.6666259765625" style="-fx-background-color: #ffffff;" text="Time" />
         </columns>
       </TableView>
-      <Line endX="729.0" layoutX="106.0" layoutY="616.0" startX="-106.00000762939453" stroke="WHITE" />
+      <Line endX="729.0" layoutX="106.0" layoutY="582.0" startX="-106.00000762939453" stroke="WHITE" />
       <TextField fx:id="filterField" layoutX="556.0" layoutY="21.0" prefHeight="33.0" prefWidth="243.0" promptText="search" />
       <FontIcon iconColor="WHITE" iconLiteral="gmi-search" iconSize="40" layoutX="504.0" layoutY="59.0" />
     </children>
