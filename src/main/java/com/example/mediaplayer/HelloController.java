@@ -57,7 +57,7 @@ public class HelloController implements Initializable {
 
 
     public void handleMainImageView() throws IOException {
-        FXMLLoader root = new FXMLLoader(HelloApplication.class.getResource("Playlists.fxml"));
+        FXMLLoader root = new FXMLLoader(HelloApplication.class.getResource("hello-view1.fxml"));
 
         Stage window = (Stage) mainImageView.getScene().getWindow();
         window.setScene(new Scene(root.load(),825, 790));
