@@ -5,7 +5,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -14,9 +16,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -50,6 +54,16 @@ public class HelloController implements Initializable {
     private boolean running;
     @FXML
     private ImageView logoImageView, mainImageView, playlistsImageView;
+
+
+    public void handleMainImageView() throws IOException {
+        FXMLLoader root = new FXMLLoader(HelloApplication.class.getResource("Playlists.fxml"));
+
+        Stage window = (Stage) mainImageView.getScene().getWindow();
+        window.setScene(new Scene(root.load(),825, 790));
+    }
+
+
 
     @FXML
     private TableColumn<User, String> artist;
