@@ -84,7 +84,7 @@
           </columns>
       </TableView>
         <Line endX="729.0" layoutX="106.0" layoutY="582.0" startX="-106.00000762939453" stroke="WHITE" />
-        <TextField fx:id="filterField" layoutX="556.0" layoutY="21.0" prefHeight="33.0" prefWidth="243.0" promptText="search" />
+<!--        <TextField fx:id="filterField" layoutX="556.0" layoutY="21.0" prefHeight="33.0" prefWidth="243.0" promptText="search" />-->
         <FontIcon iconColor="WHITE" iconLiteral="gmi-search" iconSize="40" layoutX="504.0" layoutY="59.0" />
           <FontIcon iconColor="WHITE" iconLiteral="gmi-pause" iconSize="40" layoutX="108.0" layoutY="709.0" text="" />
     </children>

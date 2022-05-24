@@ -26,10 +26,6 @@
                </image>
             </ImageView>
          </graphic></Button>
-<!--        <Button id="pauseButton" layoutX="100.0" layoutY="665.0" mnemonicParsing="false" onAction="#pauseMedia" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #000000;">-->
-<!--         <graphic>-->
-<!--            <FontIcon iconColor="WHITE" iconLiteral="gmi-pause" iconSize="40" />-->
-<!--         </graphic></Button>-->
         <Button id="nextButton" fx:id="nextButton" layoutX="101.0" layoutY="666.0" mnemonicParsing="false" onAction="#nextMedia" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #000000;">
          <graphic>
             <FontIcon iconColor="WHITE" iconLiteral="gmi-skip-next" iconSize="40" />
