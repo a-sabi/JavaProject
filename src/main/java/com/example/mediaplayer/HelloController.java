@@ -184,6 +184,35 @@ public class HelloController implements Initializable {
             }
             playVisual();
         }
+        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                progressBar.setValue(newValue.toSeconds());
+            }
+        }
+        );
+
+        progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediaPlayer.seek(javafx.util.Duration.seconds(progressBar.getValue()));
+            }
+        });
+
+        progressBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediaPlayer.seek(javafx.util.Duration.seconds(progressBar.getValue()));
+            }
+        });
+
+        mediaPlayer.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+                javafx.util.Duration total = media.getDuration();
+                progressBar.setMax(total.toSeconds());
+            }
+        });
     }
 
     public void playMedia() throws FileNotFoundException {
@@ -244,6 +273,35 @@ public class HelloController implements Initializable {
 
             playVisual();
         }
+        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                progressBar.setValue(newValue.toSeconds());
+            }
+        }
+        );
+
+        progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediaPlayer.seek(javafx.util.Duration.seconds(progressBar.getValue()));
+            }
+        });
+
+        progressBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediaPlayer.seek(javafx.util.Duration.seconds(progressBar.getValue()));
+            }
+        });
+
+        mediaPlayer.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+                javafx.util.Duration total = media.getDuration();
+                progressBar.setMax(total.toSeconds());
+            }
+        });
     }
 
     public void OpenButtonAction() throws FileNotFoundException {
@@ -349,6 +407,35 @@ public class HelloController implements Initializable {
                 e.printStackTrace();
             }
         }
+        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                progressBar.setValue(newValue.toSeconds());
+            }
+        }
+        );
+
+        progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediaPlayer.seek(javafx.util.Duration.seconds(progressBar.getValue()));
+            }
+        });
+
+        progressBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                mediaPlayer.seek(javafx.util.Duration.seconds(progressBar.getValue()));
+            }
+        });
+
+        mediaPlayer.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+                javafx.util.Duration total = media.getDuration();
+                progressBar.setMax(total.toSeconds());
+            }
+        });
     }
 
     private static void configureFileChooser(

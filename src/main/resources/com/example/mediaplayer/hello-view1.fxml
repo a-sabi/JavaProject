@@ -81,7 +81,6 @@
             <Image url="@../../../../../../images/plus.png" />
          </image>
       </ImageView>
-      <FontIcon iconColor="WHITE" iconLiteral="gmi-pause" iconSize="40" layoutX="101.0" layoutY="708.0" text="" />
       <Button layoutX="651.0" layoutY="216.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #d58a94;" textOverrun="CENTER_ELLIPSIS" />
       <ImageView fitHeight="48.0" fitWidth="56.0" layoutX="647.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #d58a94;">
          <image>
