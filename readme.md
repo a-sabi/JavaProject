@@ -7,7 +7,7 @@
 ## Authors
 <span style="color: red"> WARNING! </span>
 
-This project was made by very exhausted students, so please be nice to us and our mistakes <center><p align = "center"> :kissing: </p> </center>
+This project was made by very exhausted students, so please be nice to us and our mistakes <left><p align = "center"> :kissing::kissing::kissing::kissing: </p> </left>
 
 - [@MakoMaria](https://github.com/MakoMaria)
 - [@morcherna](https://github.com/morcherna)
