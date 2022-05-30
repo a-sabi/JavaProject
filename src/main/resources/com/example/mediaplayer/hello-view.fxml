@@ -46,19 +46,27 @@
             <Image url="@../../../../../../images/Component 3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="mainImageView" fitHeight="61.0" fitWidth="200.0" layoutX="118.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../images/Component 4.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="playlistsImageView" fitHeight="61.0" fitWidth="200.0" layoutX="285.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../images/Component 5.png" />
-         </image>
-      </ImageView>
       <TextField fx:id="searchBar" layoutX="556.0" layoutY="21.0" prefHeight="33.0" prefWidth="243.0" promptText="search" />
       <FontIcon iconColor="WHITE" iconLiteral="gmi-search" iconSize="40" layoutX="504.0" layoutY="59.0" />
       <ListView fx:id="MusicListView" layoutY="93.0" onMouseClicked="#MusicListViewClickAction" prefHeight="485.0" prefWidth="835.0" />
       <Slider fx:id="progressBar" layoutY="710.0" prefHeight="14.0" prefWidth="840.0" />
+      <Button layoutX="111.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchTohelloView" prefHeight="61.0" prefWidth="141.0" style="-fx-background-color: #000000;">
+         <graphic>
+            <ImageView fx:id="mainImageView" fitHeight="61.0" fitWidth="200.0" onKeyPressed="#switchTohelloView" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../images/Component 4.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="286.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchTohelloView0" onKeyPressed="#switchTohelloView0" prefHeight="61.0" prefWidth="141.0" style="-fx-background-color: #000000;">
+         <graphic>
+             <ImageView fx:id="playlistsImageView" fitHeight="61.0" fitWidth="200.0" onKeyPressed="#switchTohelloView0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../images/Component 5.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>
