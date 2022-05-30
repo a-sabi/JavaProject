@@ -5,6 +5,9 @@
 
 
 ## Authors
+<span style="color: red"> WARNING! </span>
+
+This project was made by very exhausted students, so please be nice to us and our mistakes <center><p align = "center"> :kissing: </p> </center>
 
 - [@MakoMaria](https://github.com/MakoMaria)
 - [@morcherna](https://github.com/morcherna)
@@ -12,5 +15,5 @@
 - [@a-sabi](https://github.com/a-sabi)
 
 ## Demo ![App Screenshot](https://github.com/a-sabi/JavaProject/blob/master/images/screen.jpg)
-Медиа плеер помогает слушать песни в удобном формате с красивым визуалом, также можно создавать плейлисты по любым вашим предпочтениям
+Медиа плеер помогает слушать песни в удобном формате с красивым интерфейсом, также можно создавать плейлисты по любым вашим предпочтениям
 
