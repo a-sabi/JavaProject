@@ -14,4 +14,3 @@
 ## Demo ![App Screenshot](https://vk.com/doc401870026_638586491?hash=xrhGZ1JUeFXNjc4WxzfRQ83NQcFXF3hjIbekJLxGauc&dl=ZqEgnFmInqJRx5BEvhjtXq7VzrjUJ7qMulNWgGqlzNs)
 Медиа плеер помогает слушать песни в удобном формате с красивым визуалом, также можно создавать плейлисты по любым вашим предпочтениям
 
-
