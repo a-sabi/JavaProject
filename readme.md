@@ -1,4 +1,4 @@
-![Logo](https://vk.com/doc401870026_638585110?hash=JCoUK78zwzvTMzgHy3tYpaqZf6LfZGZ5JD1zPQtiSiD&dl=j8hXp0Sa3vKFgvIs359dKNbBehh85qYq8Vj1ajjOROD)
+![Logo](https://github.com/a-sabi/JavaProject/blob/master/images/Component%203.png)
 # Media Player
 
 С помощью данного Медиа плеера каждый желающий может слушать свои любимые песенки:)
