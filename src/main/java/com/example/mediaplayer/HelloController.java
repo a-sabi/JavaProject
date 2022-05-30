@@ -2,25 +2,34 @@ package com.example.mediaplayer;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -50,7 +59,69 @@ public class HelloController implements Initializable {
     private boolean isPlaying = false;
     private boolean islistOpen = false;
     @FXML
-    private ImageView logoImageView, mainImageView, playlistsImageView, playImageView;
+    private ImageView logoImageView, mainImageView, playlistsImageView, playImageView, zho;
+
+
+    // начало нового кода
+     private Stage stage;
+     private Scene scene;
+     private Parent root;
+
+
+
+    // new code
+    /*
+     @FXML
+     private BorderPane mainPane;
+
+     @FXML
+     private void switchTohelloView(ActionEvent event){
+         FxmlLoader object = new FxmlLoader();
+         Pane view = object.getPage("hello-view");
+         mainPane.setCenter(view);
+     }
+
+    @FXML
+    private void switchTohelloView0(ActionEvent event){
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("hello-view0");
+        mainPane.setCenter(view);
+    }
+
+    @FXML
+    private void switchToPlaylist1(ActionEvent event){
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPage("playlist1");
+        mainPane.setCenter(view);
+    }*/
+
+
+
+     public void switchTohelloView(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+     }
+
+    public void switchTohelloView0(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("hello-view0.fxml"));
+         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToPlaylist1(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playlist1.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    //конец нового кода
+
 
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -71,6 +142,12 @@ public class HelloController implements Initializable {
         File playFile = new File("images/Polygon 1.png");
         Image playImage = new Image(playFile.toURI().toString());
         playImageView.setImage(playImage);
+
+
+//        File zhoFIle = new File("images/album.jpg");
+//        Image zhoImage = new Image(zhoFile.toURI().toString());
+//        zho.setImage(zhoImage);
+
     }
 
     public void previousMedia() throws FileNotFoundException {
