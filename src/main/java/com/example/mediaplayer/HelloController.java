@@ -67,35 +67,6 @@ public class HelloController implements Initializable {
      private Parent root;
 
 
-
-    // new code
-    /*
-     @FXML
-     private BorderPane mainPane;
-
-     @FXML
-     private void switchTohelloView(ActionEvent event){
-         FxmlLoader object = new FxmlLoader();
-         Pane view = object.getPage("hello-view");
-         mainPane.setCenter(view);
-     }
-
-    @FXML
-    private void switchTohelloView0(ActionEvent event){
-        FxmlLoader object = new FxmlLoader();
-        Pane view = object.getPage("hello-view0");
-        mainPane.setCenter(view);
-    }
-
-    @FXML
-    private void switchToPlaylist1(ActionEvent event){
-        FxmlLoader object = new FxmlLoader();
-        Pane view = object.getPage("playlist1");
-        mainPane.setCenter(view);
-    }*/
-
-
-
      public void switchTohelloView(ActionEvent event) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
