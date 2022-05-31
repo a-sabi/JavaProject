@@ -18,3 +18,4 @@ This project was made by very exhausted students, so please be nice to us and be
 ## Demo ![App Screenshot](https://github.com/a-sabi/JavaProject/blob/master/images/screen.jpg)
 Медиа плеер помогает слушать песни в удобном формате с красивым интерфейсом, также можно создавать плейлисты по любым вашим предпочтениям
 
+
