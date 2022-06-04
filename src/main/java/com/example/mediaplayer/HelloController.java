@@ -18,18 +18,16 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class HelloController implements Initializable {
     public AnchorPane player;
@@ -52,7 +50,9 @@ public class HelloController implements Initializable {
     private Media media;
     private MediaPlayer mediaPlayer;
     private List<File> fileList;
-    private final FileChooser fileChooser = new FileChooser();
+    //private final FileChooser fileChooser = new FileChooser();
+    private final DirectoryChooser directoryChooser = new DirectoryChooser();
+    private File musicdirectory;
 
     private int currentSong = 0;
     private boolean isPlaying = false;
@@ -77,7 +77,7 @@ public class HelloController implements Initializable {
 
     public void switchTohelloView0(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view0.fxml"));
-         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -114,6 +114,18 @@ public class HelloController implements Initializable {
         playImageView.setImage(playImage);
 
 
+         try (FileReader reader = new FileReader("config.txt")){
+             String path = "";
+             int c;
+             while ((c = reader.read()) != -1){
+                 path += (char)c;
+             }
+             musicdirectory = new File(path);
+             fileList = getMusicList(musicdirectory);
+             ShowMusicList();
+         }
+         catch (IOException e){
+         }
 //        File zhoFIle = new File("images/album.jpg");
 //        Image zhoImage = new Image(zhoFile.toURI().toString());
 //        zho.setImage(zhoImage);
@@ -274,27 +286,41 @@ public class HelloController implements Initializable {
         });
     }
 
-    public void OpenButtonAction() throws FileNotFoundException {
-        List<File> fileListOld = fileList;
-        configureFileChooser(fileChooser);
-        fileList = fileChooser.showOpenMultipleDialog(Globals.primaryStage);
+    public List<File> getMusicList(File musicdirectory){
+        List<File> musiclist = new ArrayList<File>();
+        if (musicdirectory != null){
+            musiclist = Arrays.stream(musicdirectory.listFiles(new FileFilter() {
+                @Override
+                public boolean accept(File file) {
+                    if (file.getName().endsWith(".mp3"))
+                        return true;
+                    return false;
+                }
+            })).toList();
+        }
+        return musiclist;
+    }
 
-        if(fileList != null) {
-            if (isPlaying) {
+    public void ShowMusicList() throws FileNotFoundException {
+        List<File> fileListOld = fileList;
+        if (fileList != null) {
+            if (isPlaying && mediaPlayer != null) {
                 mediaPlayer.stop();
                 isPlaying = false;
                 try {
                     playButton.setGraphic(new ImageView(new Image(new FileInputStream("images/Polygon 1.png"))));
-                }catch (FileNotFoundException e) {
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-
-                MusicListView.getItems().clear();
-                MusicListView.getSelectionModel().selectFirst();
+                if(MusicListView != null) {
+                    MusicListView.getItems().clear();
+                    MusicListView.getSelectionModel().selectFirst();
+                }
             }
-            for(int i = 0; i < fileList.size(); i++) {
-                MusicListView.getItems().add(fileList.get(i).getName());
-            }
+            if(MusicListView!= null)
+                for (int i = 0; i < fileList.size(); i++) {
+                    MusicListView.getItems().add(fileList.get(i).getName());
+                }
 
             Globals.MusicList = fileList.size();
             currentSong = 0;
@@ -319,11 +345,11 @@ public class HelloController implements Initializable {
             fileList = fileListOld;
         }
         mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
-            @Override
-            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
-                progressBar.setValue(newValue.toSeconds());
-            }
-        }
+                                                          @Override
+                                                          public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                                                              progressBar.setValue(newValue.toSeconds());
+                                                          }
+                                                      }
         );
 
         progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -349,7 +375,24 @@ public class HelloController implements Initializable {
         });
     }
 
+    public void OpenButtonAction() throws FileNotFoundException {
+//        configureFileChooser(fileChooser);
+//        fileList = fileChooser.showOpenMultipleDialog(Globals.primaryStage);
+        configureDirectoryChooser(directoryChooser);
+        musicdirectory = directoryChooser.showDialog(Globals.primaryStage);
+        File configfile = new File("config.txt");
+        try (FileWriter fileWriter = new FileWriter(configfile, false)){
+            fileWriter.write(musicdirectory.getAbsolutePath());
+            fileWriter.flush();
+        }
+        catch (IOException exception){
+        }
+        fileList = getMusicList(musicdirectory);
+        ShowMusicList();
+    }
+
     public void MusicListViewClickAction() throws FileNotFoundException {
+
         if (fileList != null) {
             mediaPlayer.stop();
             currentSong = MusicListView.getSelectionModel().getSelectedIndex();
@@ -360,7 +403,7 @@ public class HelloController implements Initializable {
                 isPlaying = false;
                 try {
                     playButton.setGraphic(new ImageView(new Image(new FileInputStream("images/Polygon 1.png"))));
-                }catch (FileNotFoundException e) {
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
             }
@@ -373,16 +416,16 @@ public class HelloController implements Initializable {
             isPlaying = true;
             try {
                 playButton.setGraphic(new ImageView(new Image(new FileInputStream("images/Component 6.png"))));
-            }catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
         mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
-            @Override
-            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
-                progressBar.setValue(newValue.toSeconds());
-            }
-        }
+                                                          @Override
+                                                          public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                                                              progressBar.setValue(newValue.toSeconds());
+                                                          }
+                                                      }
         );
 
         progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -406,16 +449,26 @@ public class HelloController implements Initializable {
                 progressBar.setMax(total.toSeconds());
             }
         });
+
     }
 
-    private static void configureFileChooser(
-            final FileChooser fileChooser) {
-        fileChooser.setTitle("View songs");
-        fileChooser.setInitialDirectory(
+//    private static void configureFileChooser(
+//            final FileChooser fileChooser) {
+//        fileChooser.setTitle("View songs");
+//        fileChooser.setInitialDirectory(
+//                new File(System.getProperty("user.home"))
+//        );
+//        fileChooser.getExtensionFilters().addAll(
+//                new FileChooser.ExtensionFilter("MP3", "*.mp3")
+//        );
+//    }
+
+
+    private static void configureDirectoryChooser(
+            final DirectoryChooser directoryChooser) {
+        directoryChooser.setTitle("View songs");
+        directoryChooser.setInitialDirectory(
                 new File(System.getProperty("user.home"))
-        );
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("MP3", "*.mp3")
         );
     }
 
