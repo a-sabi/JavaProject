@@ -11,6 +11,7 @@ import javafx.stage.WindowEvent;
 
 public class HelloApplication extends Application {
 
+
     @Override
     //начало
       public void start(Stage stage){
