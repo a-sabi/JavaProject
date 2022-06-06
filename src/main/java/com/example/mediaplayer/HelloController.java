@@ -41,8 +41,7 @@ public class HelloController implements Initializable {
     private ListView <String> MusicListView;
     @FXML
     private Slider progressBar;
-    @FXML
-    private TextField searchBar;
+
 
 
     private Media media;
@@ -56,7 +55,7 @@ public class HelloController implements Initializable {
     private boolean isPlaying = false;
     private boolean islistOpen = false;
     @FXML
-    private ImageView logoImageView, mainImageView, playlistsImageView, playImageView, zho;
+    private ImageView logoImageView, mainImageView, playlistsImageView, playImageView;
 
 
     // начало нового кода
@@ -124,9 +123,6 @@ public class HelloController implements Initializable {
          }
          catch (IOException e){
          }
-//        File zhoFIle = new File("images/album.jpg");
-//        Image zhoImage = new Image(zhoFile.toURI().toString());
-//        zho.setImage(zhoImage);
 
     }
 
