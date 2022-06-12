@@ -23,10 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
-//import java.nio.file.Files;
-//import java.nio.file.Paths;
 import java.util.*;
-
 
 public class HelloController implements Initializable {
     public AnchorPane player;
