@@ -23,8 +23,8 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
 import java.util.*;
 
 public class HelloController implements Initializable {
@@ -339,11 +339,11 @@ public class HelloController implements Initializable {
             fileList = fileListOld;
         }
         mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
-                                                          @Override
-                                                          public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
-                                                              progressBar.setValue(newValue.toSeconds());
-                                                          }
-                                                      }
+            @Override
+            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                progressBar.setValue(newValue.toSeconds());
+            }
+        }
         );
 
         progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -415,11 +415,11 @@ public class HelloController implements Initializable {
             }
         }
         mediaPlayer.currentTimeProperty().addListener(new ChangeListener<javafx.util.Duration>() {
-                                                          @Override
-                                                          public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
-                                                              progressBar.setValue(newValue.toSeconds());
-                                                          }
-                                                      }
+            @Override
+            public void changed(ObservableValue<? extends javafx.util.Duration> observable, javafx.util.Duration oldValue, javafx.util.Duration newValue) {
+                progressBar.setValue(newValue.toSeconds());
+            }
+        }
         );
 
         progressBar.setOnMousePressed(new EventHandler<MouseEvent>() {
