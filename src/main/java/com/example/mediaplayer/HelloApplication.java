@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
 
     @Override
     //начало
-      public void start(Stage stage){
+    public void start(Stage stage){
         try{
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
 
