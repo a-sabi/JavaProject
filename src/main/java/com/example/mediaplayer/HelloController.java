@@ -26,12 +26,23 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * initialize all functions
+ * @author Sabina
+ * @version 1.3
+ */
 public class HelloController implements Initializable {
     public AnchorPane player;
+    /**
+     * declaring variables via FXML
+     */
     @FXML
     private Pane pane;
     @FXML
     private Label songLabel;
+    /**
+     * declaring buttons via FXML
+     */
     @FXML
     private Button playButton, pauseButton, nextButton, previousButton, openButton;
     @FXML
@@ -42,7 +53,9 @@ public class HelloController implements Initializable {
     private Slider progressBar;
 
 
-
+    /**
+     * uploading songs
+     */
     private Media media;
     private MediaPlayer mediaPlayer;
     private List<File> fileList;
@@ -62,7 +75,10 @@ public class HelloController implements Initializable {
      private Scene scene;
      private Parent root;
 
-
+    /**
+     * @author Kris
+     * the button to go to the main page
+     */
      public void switchTohelloView(ActionEvent event) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -70,7 +86,9 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
         stage.show();
      }
-
+    /**
+     * the button to go to the playlists page
+     */
     public void switchTohelloView0(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view0.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -78,7 +96,9 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    /**
+     * the button to go to the playlist page
+     */
     public void switchToPlaylist1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("playlist1.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -88,7 +108,9 @@ public class HelloController implements Initializable {
     }
     //конец нового кода
 
-
+    /**
+     *  Initialize pictures
+     */
     public void initialize(URL arg0, ResourceBundle arg1) {
 
 
@@ -124,7 +146,9 @@ public class HelloController implements Initializable {
          }
 
     }
-
+    /**
+     * move to the previous song
+     */
     public void previousMedia() throws FileNotFoundException {
         if (mediaPlayer != null && currentSong >0){
             mediaPlayer.stop();
@@ -189,7 +213,9 @@ public class HelloController implements Initializable {
             }
         });
     }
-
+    /**
+     * start playing the song
+     */
     public void playMedia() throws FileNotFoundException {
         if(mediaPlayer != null) {
             if (!isPlaying) {
@@ -278,7 +304,9 @@ public class HelloController implements Initializable {
             }
         });
     }
-
+    /**
+     * selecting a folder with mp3 files or mp3 files from a folder
+     */
     public List<File> getMusicList(File musicdirectory){
         List<File> musiclist = new ArrayList<File>();
         if (musicdirectory != null){
@@ -293,7 +321,9 @@ public class HelloController implements Initializable {
         }
         return musiclist;
     }
-
+    /**
+     * displaying uploaded songs
+     */
     public void ShowMusicList() throws FileNotFoundException {
         List<File> fileListOld = fileList;
         if (fileList != null) {
@@ -367,10 +397,11 @@ public class HelloController implements Initializable {
             }
         });
     }
-
+    /**
+     * creating a text file where a list of songs is added
+     */
     public void OpenButtonAction() throws FileNotFoundException {
-//        configureFileChooser(fileChooser);
-//        fileList = fileChooser.showOpenMultipleDialog(Globals.primaryStage);
+
         configureDirectoryChooser(directoryChooser);
         musicdirectory = directoryChooser.showDialog(Globals.primaryStage);
         File configfile = new File("config.txt");
@@ -383,7 +414,9 @@ public class HelloController implements Initializable {
         fileList = getMusicList(musicdirectory);
         ShowMusicList();
     }
-
+    /**
+     * changing icons and stop-play functions
+     */
     public void MusicListViewClickAction() throws FileNotFoundException {
 
         if (fileList != null) {
@@ -445,16 +478,6 @@ public class HelloController implements Initializable {
 
     }
 
-//    private static void configureFileChooser(
-//            final FileChooser fileChooser) {
-//        fileChooser.setTitle("View songs");
-//        fileChooser.setInitialDirectory(
-//                new File(System.getProperty("user.home"))
-//        );
-//        fileChooser.getExtensionFilters().addAll(
-//                new FileChooser.ExtensionFilter("MP3", "*.mp3")
-//        );
-//    }
 
 
     private static void configureDirectoryChooser(
