@@ -9,9 +9,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * Run the program
+ * @author Sabina
+ * @version 1.3
+ */
 public class HelloApplication extends Application {
 
-
+    /**
+     * switching FXML pages
+     */
     @Override
     //начало
     public void start(Stage stage){

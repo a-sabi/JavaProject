@@ -24,12 +24,18 @@ import java.io.*;
 import java.util.List;
 
 
-
+/**
+ * inheritance of methods from a HelloController class
+ * @author morcherna
+ * @version 1.3
+ */
 
 @ExtendWith(ApplicationExtension.class)
 class HelloControllerTest1   {
 
-
+    /**
+     * declaring variables media etc.
+     */
     private Media media, media1;
     private MediaPlayer mediaPlayer;
     private List<File> fileList;
@@ -42,7 +48,9 @@ class HelloControllerTest1   {
     private HelloController hc = new HelloController();
     private ObservableList<Media> mediaList = FXCollections.observableArrayList();
 
-
+    /**
+     * launching the media player window
+     */
     @Start
     public void start(Stage stage) throws IOException {
         try{
@@ -56,8 +64,13 @@ class HelloControllerTest1   {
     }
 
 
-
+    /**
+     * the annotation is performed before each test
+     */
     @BeforeEach
+    /**
+     * adding two songs
+     */
     void setUp() {
         try {
             media = new Media(new File("src/main/resources/music/song2.mp3").toURI().toASCIIString());
@@ -70,6 +83,9 @@ class HelloControllerTest1   {
 
 
     @Test
+    /**
+     * checking to open the song selection window
+     */
     void testOpenButtonAction(FxRobot robot) {
         mediaPlayer.play();
         robot.clickOn("#openButton");
@@ -82,6 +98,9 @@ class HelloControllerTest1   {
 
 
     @Test
+    /**
+     * checking the operation of the 'play' button
+     */
     void testPlayMedia(FxRobot robot) {
         mediaPlayer.play();
         robot.clickOn("#playButton");
@@ -93,6 +112,9 @@ class HelloControllerTest1   {
     }
 
     @Test
+    /**
+     * checking the operation of the 'stop' button
+     */
     void testPauseMedia(FxRobot robot) {
         mediaPlayer.play();
         robot.doubleClickOn("#playButton");
